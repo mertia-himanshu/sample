@@ -125,9 +125,29 @@ Sample Paradox document
 <article class="md-content__inner md-typeset">
 <div class="md-content__searchable">
 <h1><a href="#this-is-sample-page-refer-website-for-more-details-" name="this-is-sample-page-refer-website-for-more-details-" class="anchor"><span class="anchor-link"></span></a>This is sample page, refer <a href="https://developer.lightbend.com/docs/paradox/current/index.html">Paradox</a> website for more details.</h1>
+<dl>
+  <dt>Scala</dt>
+  <dd>
+  <pre class="prettyprint"><a class="icon go-to-source" href="https://github.com/mertia-himanshu/sample.git/tree/master/backend/src/main/scala/org/tmt/sample/http/SampleRoute.scala#L14-L29" target="_blank" title="Go to snippet source"></a><code class="language-scala"> val route: Route = post {
+    path(&quot;greeting&quot;) {
+      entity(as[UserInfo]) { userInfo =&gt;
+        complete(service1.greeting(userInfo))
+      }
+    } ~
+    path(&quot;adminGreeting&quot;) {
+      securityDirectives.sPost(RealmRolePolicy(&quot;Esw-user&quot;)) { token =&gt;
+        entity(as[UserInfo]) { userInfo =&gt; complete(service1.adminGreeting(userInfo)) }
+      }
+    }
+  } ~
+    path(&quot;sayBye&quot;) {
+      complete(service2.sayBye())
+    }
+}</code></pre></dd>
+</dl>
 </div>
 <div>
-<a href="https://github.com/mertia-himanshu/sample/tree/master/src/main/sample-page.md" title="Edit this page" class="md-source-file md-edit">
+<a href="https://github.com/mertia-himanshu/sample.git/tree/master/docs/src/main/sample-page.md" title="Edit this page" class="md-source-file md-edit">
 Edit this page
 </a>
 </div>
